@@ -1,0 +1,320 @@
+/* RESET BÁSICO Y VARIABLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg-color: #0f0c20;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --accent-color: #ff007f;
+    --accent-gradient: linear-gradient(135deg, #ff007f, #7928ca);
+    --text-color: #ffffff;
+    --text-muted: #b3b3b3;
+    --whatsapp-color: #25d366;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* ENCABEZADO */
+.hero-header {
+    width: 100%;
+    padding: 50px 20px;
+    text-align: center;
+    background: radial-gradient(circle at center, #2a0845 0%, var(--bg-color) 70%);
+    position: relative;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.glowing-text {
+    font-size: 2.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255, 0, 127, 0.4);
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+/* CONTENEDOR GRID: 2 IMÁGENES POR PANTALLA */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    flex: 1;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Muestra exactamente 2 columnas */
+    gap: 35px;
+}
+
+/* EFECTO 3D DE GIRO (FLIP CARD) */
+.flip-toggle {
+    display: none; /* Oculta el checkbox */
+}
+
+.card {
+    perspective: 1000px;
+    background: transparent;
+    border-radius: 18px;
+    height: 480px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+/* Girar al hacer clic en el botón (marcar el checkbox) */
+.flip-toggle:checked ~ .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Regresar a la normalidad al alejar el cursor (mouse leave) */
+.card:not(:hover) .card-inner {
+    transform: rotateY(0deg) !important;
+}
+
+.card:not(:hover) .flip-toggle {
+    checked: false;
+}
+
+/* FRENTE Y REVERSO DE LA TARJETA */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* CARA FRONTAL */
+.card-front {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+}
+
+.img-container {
+    width: 100%;
+    height: 360px;
+    overflow: hidden;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-front .img-container img {
+    transform: scale(1.06);
+}
+
+.card-info {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 12, 32, 0.8);
+    flex: 1;
+}
+
+.card-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* BOTÓN DE PRECIO EN EL FRENTE */
+.btn-precio {
+    background: var(--accent-gradient);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+}
+
+.btn-precio:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+}
+
+/* CARA TRASERA */
+.card-back {
+    transform: rotateY(180deg);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* IMAGEN DE FONDO OPACA */
+.bg-back-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(4px) opacity(0.3); /* Filtro para opacar y resaltar el precio */
+    transform: scale(1.1);
+}
+
+.back-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 12, 32, 0.75);
+}
+
+.back-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.price-tag {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 0, 127, 0.8);
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.price-detail {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.btn-volver {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: background 0.3s ease;
+    user-select: none;
+}
+
+.btn-volver:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* BOTÓN WHATSAPP */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--whatsapp-color);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    text-decoration: none;
+    z-index: 1000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.15) rotate(10deg);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.7);
+}
+
+.whatsapp-btn .tooltip {
+    position: absolute;
+    right: 70px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+}
+
+.whatsapp-btn:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* PIE DE PÁGINA */
+.main-footer {
+    width: 100%;
+    padding: 25px 20px;
+    background: #080612;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: auto;
+}
+
+.main-footer p {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+/* ADAPTABILIDAD EN PANTALLAS PEQUEÑAS (MÓVILES) */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Pasa a 1 columna solo en pantallas de celular muy pequeñas */
+    }
+    
+    .glowing-text {
+        font-size: 2rem;
+    }
+}

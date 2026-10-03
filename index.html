@@ -1,12 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebHell</title>
+    <title>Galería de Fotos</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    
+
+    <!-- Encabezado -->
+    <header class="hero-header">
+        <div class="glass-overlay">
+            <h1 class="glowing-text">MIRA A TU KBRO FAVORITO</h1>
+            <p class="subtitle">La colección exclusiva e inolvidable</p>
+        </div>
+    </header>
+
+    <!-- Galería Principal (2 columnas por fila) -->
+    <main class="container">
+        <section class="gallery-grid">
+            
+            <!-- TARJETA 1 -->
+            <div class="card">
+                <input type="checkbox" id="flip-1" class="flip-toggle">
+                <div class="card-inner">
+                    <!-- Frente -->
+                    <div class="card-front">
+                        <div class="img-container">
+                            <img src="imagen/foto1.jpg.jpeg" alt="Foto 1">
+                        </div>
+                        <div class="card-info">
+                            <h3>kbraso</h3>
+                            <label for="flip-1" class="btn-precio">
+                                <i class="fas fa-tag"></i> Ver Precio
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Reverso -->
+                    <div class="card-back">
+                        <img src="imagen/foto1.jpg.jpeg" alt="Foto 1 Fondo Opaco" class="bg-back-img">
+                        <div class="back-overlay"></div>
+                        <div class="back-content">
+                            <span class="price-tag">S/ 50.00</span>
+                            <p class="price-detail">Edición Limitada High Quality</p>
+                            <label for="flip-1" class="btn-volver">
+                                <i class="fas fa-undo"></i> Volver
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARJETA 2 -->
+            <div class="card">
+                <input type="checkbox" id="flip-2" class="flip-toggle">
+                <div class="card-inner">
+                    <!-- Frente -->
+                    <div class="card-front">
+                        <div class="img-container">
+                            <img src="imagen/foto2.jpg.jpeg" alt="Foto 2">
+                        </div>
+                        <div class="card-info">
+                            <h3>el mas gay</h3>
+                            <label for="flip-2" class="btn-precio">
+                                <i class="fas fa-tag"></i> Ver Precio
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Reverso -->
+                    <div class="card-back">
+                        <img src="imagen/foto2.jpg.jpeg" alt="Foto 2 Fondo Opaco" class="bg-back-img">
+                        <div class="back-overlay"></div>
+                        <div class="back-content">
+                            <span class="price-tag">S/ 75.00</span>
+                            <p class="price-detail">Momento Exclusivo Coleccionable</p>
+                            <label for="flip-2" class="btn-volver">
+                                <i class="fas fa-undo"></i> Volver
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARJETA 3 -->
+            <div class="card">
+                <input type="checkbox" id="flip-3" class="flip-toggle">
+                <div class="card-inner">
+                    <!-- Frente -->
+                    <div class="card-front">
+                        <div class="img-container">
+                            <img src="imagen/foto3.jpg.jpeg" alt="Foto 3">
+                        </div>
+                        <div class="card-info">
+                            <h3>rosqueton</h3>
+                            <label for="flip-3" class="btn-precio">
+                                <i class="fas fa-tag"></i> Ver Precio
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Reverso -->
+                    <div class="card-back">
+                        <img src="imagen/foto3.jpg.jpeg" alt="Foto 3 Fondo Opaco" class="bg-back-img">
+                        <div class="back-overlay"></div>
+                        <div class="back-content">
+                            <span class="price-tag">S/ 100.00</span>
+                            <p class="price-detail">Edición Especial de Aniversario</p>
+                            <label for="flip-3" class="btn-volver">
+                                <i class="fas fa-undo"></i> Volver
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARJETA 4 -->
+            <div class="card">
+                <input type="checkbox" id="flip-4" class="flip-toggle">
+                <div class="card-inner">
+                    <!-- Frente -->
+                    <div class="card-front">
+                        <div class="img-container">
+                            <img src="imagen/foto4.jpg.jpeg" alt="Foto 4">
+                        </div>
+                        <div class="card-info">
+                            <h3>homosexualx1000</h3>
+                            <label for="flip-4" class="btn-precio">
+                                <i class="fas fa-tag"></i> Ver Precio
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Reverso -->
+                    <div class="card-back">
+                        <img src="imagen/foto4.jpg.jpeg" alt="Foto 4 Fondo Opaco" class="bg-back-img">
+                        <div class="back-overlay"></div>
+                        <div class="back-content">
+                            <span class="price-tag">S/ 120.00</span>
+                            <p class="price-detail">Colección Premium Inolvidable</p>
+                            <label for="flip-4" class="btn-volver">
+                                <i class="fas fa-undo"></i> Volver
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/51910912408" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contacto por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip">¡Escríbeme!</span>
+    </a>
+
+    <!-- Pie de página -->
+    <footer class="main-footer">
+        <p>El MAS KBRO DE JERUCHO</p>
+    </footer>
+
 </body>
 </html>
